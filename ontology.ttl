@@ -9,9 +9,7 @@ ex:Bob
     schema:givenName "Robert" ;
     schema:familyName "Junior" ;
     schema:birthDate "1971-07-07"^^xsd:date ;
-    schema:deathDate "1968-09-10"^^xsd:date ;
+    schema:deathDate "2000-09-10"^^xsd:date ;
+    schema:AddressShape "ex:BobsAddress";
     schema:address ex:BobsAddress .
 
-ex:BobsAddress
-    schema:streetAddress "1600 Amphitheatre Pkway" ;
-    schema:postalCode 9404 .
