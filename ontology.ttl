@@ -10,6 +10,5 @@ ex:Bob
     schema:familyName "Junior" ;
     schema:birthDate "1971-07-07"^^xsd:date ;
     schema:deathDate "2000-09-10"^^xsd:date ;
-    schema:AddressShape "ex:BobsAddress";
     schema:address ex:BobsAddress .
 
