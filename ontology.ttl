@@ -8,7 +8,8 @@ ex:Bob
     a schema:Person ;
     schema:givenName "Robert" ;
     schema:familyName "Junior" ;
-    schema:birthDate "1971-07-07"^^xsd:date ;
+    schema:birthDate "2010-07-07"^^xsd:date ;
     schema:deathDate "2000-09-10"^^xsd:date ;
+    schema:AddressShape "ex:BobsAddress";
     schema:address ex:BobsAddress .
 
