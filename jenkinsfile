@@ -57,11 +57,13 @@ def postToGraphDB(ttlData) {
 
        // def curlCommand = "curl -X POST -H 'Content-Type:application/x-turtle' -T '${ttlData}' http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus"
 
-        def url = "http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus"
-        def curl = "curl -X POST -H 'Content-Type:application/x-turtle' -T "${ttlData}" " ${url}""
-        //bat "curl -X POST -H 'Content-Type:application/x-turtle' -T '${ttlData}' '${url}'"
+
+def curlCommand = "curl -X POST -H \"Content-Type:application/x-turtle\" -T ${ttlData} http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus"
+
         echo 'asd qwe'
-        echo curl
+        echo curlCommand
+
+        bat curlCommand
 
         
 
