@@ -44,7 +44,7 @@ def validateWithSHACL(ttlData, shaclData) {
     def shaclFile = writeTempFile(shaclData, 'test-shape.ttl')
     
     // Execute SHACL validation
-    def validationOutput = bat(script: "pyshacl -s test-shape.ttl -m -f human ${ttlFile.path}", returnStdout: true)
+    def validationOutput = bat(script: "pyshacl -s test-shape.ttl -m -f human ${ttlFile}", returnStdout: true)
     
     // Process the validation output
     def validationResult = parseValidationOutput(validationOutput)
@@ -55,7 +55,7 @@ def validateWithSHACL(ttlData, shaclData) {
 def postToGraphDB(ttlData) {
     // Your code to post TTL data to GraphDB goes here
     // Example:
-        def curlCommand = "curl -X POST -H 'Content-Type:application/x-turtle' -T '${ttlData.path}' http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus"
+        def curlCommand = "curl -X POST -H 'Content-Type:application/x-turtle' -T '${ttlData}' http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus"
 
         bat curlCommand 
         //'curl -X POST -H "Content-Type:application/x-turtle" -T "ontology.ttl" http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus'
