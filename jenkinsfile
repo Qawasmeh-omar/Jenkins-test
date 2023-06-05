@@ -5,7 +5,7 @@ pipeline {
     stage('Clone') {
       steps {
         // Clone github
-         git branch: 'main', credentialsId: 'db602758-f911-4eaa-a9fe-680c04106e1f', url: 'https://github.com/Qawasmeh-omar/Jenkins-test.git'
+         git branch: 'dev-123', credentialsId: 'db602758-f911-4eaa-a9fe-680c04106e1f', url: 'https://github.com/Qawasmeh-omar/Jenkins-test.git'
        
       }
     }
