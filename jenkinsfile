@@ -16,7 +16,7 @@ pipeline {
      stage('SHACL validation') {
             steps {
                 script {
-                    def ttlFile = readFile('ontology.ttl')
+                    def ttlFile = readFile('ontologies/ontology.ttl')
                     def shaclShape = readFile('test-shape.ttl')
                     
                     // Validate TTL against SHACL shape
