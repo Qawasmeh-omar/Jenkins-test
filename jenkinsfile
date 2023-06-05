@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-              
-                git branch: 'main', credentialsId: 'db602758-f911-4eaa-a9fe-680c04106e1f', url: 'https://github.com/Qawasmeh-omar/Jenkins-test.git'
+
+            checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], userRemoteConfigs: [[url: 'https://github.com/Qawasmeh-omar/Jenkins-test.git']]])
+
+               // git branch: 'main', credentialsId: 'db602758-f911-4eaa-a9fe-680c04106e1f', url: 'https://github.com/Qawasmeh-omar/Jenkins-test.git'
             }
         }
         
