@@ -1,0 +1,32 @@
+pipeline {
+  agent any
+  
+  stages {
+    stage('Clone') {
+      steps {
+        // Clone github
+         git branch: 'main', credentialsId: 'db602758-f911-4eaa-a9fe-680c04106e1f', url: 'https://github.com/Qawasmeh-omar/Jenkins-test.git'
+       
+      }
+    }
+    
+  
+    stage('Push to GraphDB') {
+      steps {
+        // Push GraphDB
+        bat 'curl -X POST -H "Content-Type:application/x-turtle" -T "ontology.ttl" http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus'
+       
+        }
+    }
+
+
+    stage('SPARQL') {
+      steps {
+        // Push GraphDB
+        bat 'python queries.py'
+       
+        }
+    }
+   
+  }
+}
