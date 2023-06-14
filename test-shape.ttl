@@ -11,7 +11,7 @@ schema:PersonShape
     sh:property [
         sh:path schema:givenName ;
         sh:datatype xsd:string ;
-        sh:name "given namen omar" ;
+        sh:name "given namen omarkllkj" ;
     ] ;
     sh:property [
         sh:path schema:birthDate ;
