@@ -17,16 +17,16 @@ pipeline {
             steps {
                 script {
                 
-                   def configFile= readFile('config.properties')
                    
-                   def config = new ConfigSlurper().parseText(configFile)
+                   def props= readProperties file: 'config.properties'
+                   
 
                     // Access the parameters and variables from the config file
-                    def param1 = config.para1
+                    def param1 = props['para1']
                     
 
                     // Use the values in your pipeline
-                    echo "param1: $param1"
+                    echo "param1: ${param1}"
 
                    
                   print ("ok")
