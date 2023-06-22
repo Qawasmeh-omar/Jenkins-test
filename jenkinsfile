@@ -16,6 +16,19 @@ pipeline {
      stage('SHACL validation') {
             steps {
                 script {
+                
+                   def configFile= readFile('config.properties')
+                   
+                   def config = new ConfigSlurper().parseText(configFile)
+
+                    // Access the parameters and variables from the config file
+                    def param1 = config.para1
+                    
+
+                    // Use the values in your pipeline
+                    echo "param1: $param1"
+
+                   
                   print ("ok")
                 }
             }
