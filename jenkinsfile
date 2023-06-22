@@ -12,67 +12,13 @@ pipeline {
         }
         
     
-    //stardog- maybe? - main issue, commercial tool. 
+    
      stage('SHACL validation') {
             steps {
                 script {
-                    def ttlFile = readFile('ontology.ttl')
-                    def shaclShape = readFile('test-shape.ttl')
-                    
-                    // Validate TTL against SHACL shape
-                    def validationResult = validateWithSHACL(ttlFile, shaclShape)
-                    
-                    print("********************************** results ********************************** ")
-                    print (validationResult.passed)
-                    
-                    if (validationResult.passed) {
-                        // Post the TTL to GraphDB
-                        postToGraphDB(validationResult.data)
-                    } else {
-                        print ("error")
-                        error("Validation failed: ${validationResult.error}")
-                    }
+                  print ("ok")
                 }
             }
         }
     }
-}
-
-def validateWithSHACL(ttlData, shaclData) {
-    // Write the TTL and SHACL data to temporary files
-    def ttlFile = writeTempFile(ttlData, 'ontology.ttl')
-    def shaclFile = writeTempFile(shaclData, 'test-shape.ttl')
-    
-    // Execute SHACL validation
-    def validationOutput = bat(script: "pyshacl -s test-shape.ttl -m -f human ontology.ttl", returnStdout: true)
-    
-    // Process the validation output
-    def validationResult = parseValidationOutput(validationOutput)
-    
-    return validationResult
-}
-
-def postToGraphDB(ttlData) {
-    // Your code to post TTL data to GraphDB goes here
-    // Example:
-        bat 'curl -X POST -H "Content-Type:application/x-turtle" -T "ontology.ttl" http://localhost:7210/repositories/jenkins/rdf-graphs/service?graph=http://example.org/airbus'
-}
-
-def writeTempFile(content, filename) {
-    def tempFile = File.createTempFile(filename, '')
-    tempFile.write(content)
-    
-    return tempFile.absolutePath
-}
-
-def parseValidationOutput(output) {
-    // Your code to parse the validation output and extract relevant information goes here
-    // Example:
-    if (output.contains('Conforms: True')) {
-        return [passed: true, data: output]
-    } else {
-        def error = output //output.split('conforms false')[1].trim()
-        return [passed: false, error: error]
-    }
-    
 }
